@@ -6,18 +6,53 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends ActionBarActivity {
+import com.parse.LogInCallback;
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseFacebookUtils;
+import com.parse.ParseUser;
+import com.parse.ParseException;
 
+public class MainActivity extends ActionBarActivity {
+	@SuppressWarnings("deprecation")
+	private static void getFacebookIdInBackground() {
+		  Request.executeMeRequestAsync(ParseFacebookUtils.getSession(), new Request.GraphUserCallback() {
+		    @Override
+		    public void onCompleted(GraphUser user, Response response) {
+		      if (user != null) {
+		        ParseUser.getCurrentUser().put("fbId", user.getId());
+		        ParseUser.getCurrentUser().saveInBackground();
+		      }
+		    }
+		  });
+		}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Parse.initialize(this, "uVxfiClzLcUQTzjmbgsxCBc2FnxwtIWNShjAYlDS", "DQGZDxAmQgF25azTspg0Jrw2Mc1LcViPOW3kctgi");
+		ParseFacebookUtils.initialize("uVxfiClzLcUQTzjmbgsxCBc2FnxwtIWNShjAYlDS");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		ParseFacebookUtils.logIn(this, new LogInCallback() {
+			  @Override
+			  public void done(ParseUser user, ParseException err) {
+			    if (user == null) {
+			      Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+			    } 
+			    else if (user != null) {
+			        getFacebookIdInBackground();
+			    } /*else if (user.isNew()) {
+			      Log.d("MyApp", "User signed up and logged in through Facebook!");
+			    } else {
+			      Log.d("MyApp", "User logged in through Facebook!");
+			    }*/
+			  }
+			});
 		// start Facebook Login
-		Session.openActiveSession(this, true, new Session.StatusCallback() {
+		/*Session.openActiveSession(this, true, new Session.StatusCallback() {
 
 		    // callback when session changes state
 		    @Override
@@ -37,13 +72,13 @@ public class MainActivity extends ActionBarActivity {
 		    		}).executeAsync();
 		    		}
 		    }
-		});
+		});*/
 	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	  super.onActivityResult(requestCode, resultCode, data);
-	  Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	  ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
 	}
 	
 	@Override
