@@ -89,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
 			 					TextView friends = (TextView) findViewById(R.id.textView1);
 			 					friends.setText(users.get(0).getName());			    			  /*try {
 			 					friendUsers = (List<ParseObject>) friendQuery.find();
-			 					TextView friends = (TextView) findViewById(R.id.textView1);
+			 					TextView friends = (TextView) findV iewById(R.id.textView1);
 			 					//friends.setText(((GraphUser) friendUsers.get(0)).getName());
 			 			      } catch (ParseException e) {
 			 					// TODO Auto-generated catch block

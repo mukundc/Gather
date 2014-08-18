@@ -24,15 +24,6 @@
         android:text="TextView" />
 
     <Button
-        android:id="@+id/creategathering"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/yourgatherings"
-        android:layout_alignLeft="@+id/welcome"
-        android:layout_marginBottom="52dp"
-        android:text="Create Gathering" />
-
-    <Button
         android:id="@+id/yourgatherings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,5 +31,23 @@
         android:layout_alignLeft="@+id/creategathering"
         android:layout_marginBottom="88dp"
         android:text="Your Gatherings" />
+
+    <Button
+        android:id="@+id/creategathering"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/yourgatherings"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp"
+        android:text="Create Gathering" />
+
+    <RadioButton
+        android:id="@+id/radioButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:text="RadioButton" />
 
 </RelativeLayout>
