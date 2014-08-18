@@ -14,31 +14,22 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/yourgatherings"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="67dp"
-        android:text="TextView" />
-
     <Button
         android:id="@+id/creategathering"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/yourgatherings"
-        android:layout_alignLeft="@+id/welcome"
-        android:layout_marginBottom="52dp"
+        android:layout_alignLeft="@+id/yourgatherings"
+        android:layout_below="@+id/welcome"
+        android:layout_marginTop="39dp"
         android:text="Create Gathering" />
 
     <Button
         android:id="@+id/yourgatherings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
-        android:layout_alignLeft="@+id/creategathering"
-        android:layout_marginBottom="88dp"
+        android:layout_alignLeft="@+id/welcome"
+        android:layout_below="@+id/creategathering"
+        android:layout_marginTop="16dp"
         android:text="Your Gatherings" />
 
 </RelativeLayout>
