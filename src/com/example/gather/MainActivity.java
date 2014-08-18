@@ -8,6 +8,7 @@ import com.facebook.*;
 import com.facebook.Request.GraphUserListCallback;
 import com.facebook.model.*;
 
+import android.widget.Button;
 import android.widget.TextView;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +16,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.parse.LogInCallback;
 import com.parse.Parse;
@@ -70,8 +73,19 @@ public class MainActivity extends ActionBarActivity {
 		    		  }
 		    		}).executeAsync();
 		    		
-		    		Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
+		    		Button button = (Button) findViewById(R.id.creategathering);
 
+		            button.setOnClickListener(new OnClickListener() {
+		                @Override
+		            	public void onClick(View v) {
+		                	Intent i = new Intent(MainActivity.this, CreateGathering.class);
+		                	startActivity(i);
+		                    // TODO Auto-generated method stub
+		                }
+		            });
+		    		
+		            //Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
+/*
 			    		  // callback after Graph API response with user object
 			    		  @Override
 			    		  public void onCompleted(List<GraphUser> users, Response response) {
@@ -83,52 +97,25 @@ public class MainActivity extends ActionBarActivity {
 			    			      }
 			    			      // Construct a ParseUser query that will find friends whose
 			    			      // facebook IDs are contained in the current user's friend list.
-			    			      //ParseQuery friendQuery = ParseUser.getQuery();
-			    			      //friendQuery.whereContainedIn("fbId", friendsList);
+			    			      ParseQuery friendQuery = ParseUser.getQuery();
+			    			      friendQuery.whereContainedIn("fbId", friendsList);
 			    				}
 			 					TextView friends = (TextView) findViewById(R.id.textView1);
-			 					friends.setText(users.get(0).getName());			    			  /*try {
+			 					friends.setText(users.get(0).getName());			    			  
+			    			  try {
 			 					friendUsers = (List<ParseObject>) friendQuery.find();
-			 					TextView friends = (TextView) findV iewById(R.id.textView1);
-			 					//friends.setText(((GraphUser) friendUsers.get(0)).getName());
+			 					TextView friends = (TextView) findViewById(R.id.textView1);
+			 					friends.setText(((ParseObject) friendUsers.get(0)).getString("name"));
 			 			      } catch (ParseException e) {
 			 					// TODO Auto-generated catch block
 			 					e.printStackTrace();
-			 				}*/
+			 				}
 			    		  }
-			    		}).executeAsync();
+			    		}).executeAsync();*/
 		    }
 		    }
 		}); 
 		
-		/*Request.executeMyFriendsRequestAsync(ParseFacebookUtils.getSession(), new Request.GraphUserListCallback() {
-
-			  @Override
-			  public void onCompleted(List<GraphUser> users, Response response) {
-			    if (users != null) {
-			      List<String> friendsList = new ArrayList<String>();
-			      for (GraphUser user : users) {
-			        friendsList.add(user.getId());
-			      }
-
-			      // Construct a ParseUser query that will find friends whose
-			      // facebook IDs are contained in the current user's friend list.
-			      ParseQuery friendQuery = ParseQuery.getUserQuery();
-			      friendQuery.whereContainedIn("fbId", friendsList);
-
-			      // findObjects will return a list of ParseUsers that are friends with
-			      // the current user
-			      try {
-					 friendUsers = (List<ParseObject>) friendQuery.find();
-					TextView friends = (TextView) findViewById(R.id.textView1);
-					//friends.setText(((GraphUser) friendUsers.get(0)).getName());
-			      } catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			    }
-			  }
-			});*/
 		
 			
 	}
@@ -140,6 +127,7 @@ public class MainActivity extends ActionBarActivity {
 		    public void onCompleted(GraphUser user, Response response) {
 		      if (user != null) {
 		        ParseUser.getCurrentUser().put("fbId", user.getId());
+		        ParseUser.getCurrentUser().put("name", user.getName());
 		        ParseUser.getCurrentUser().saveInBackground();
 		      }
 		    }
