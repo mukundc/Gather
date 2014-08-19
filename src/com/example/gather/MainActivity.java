@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.example.gather.CreateGathering;
+import com.example.gather.R;
 import com.facebook.*;
 import com.facebook.Request.GraphUserListCallback;
 import com.facebook.model.*;

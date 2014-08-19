@@ -6,17 +6,5 @@
     <string name="action_settings">Settings</string>
     <string name="app_id">517489268397228</string>
     <string name="title_activity_create_gathering">CreateGathering</string>
-    <string name="title_activity_create_gathering2">CreateGathering2</string>
-    <string name="title_activity_create_gathering_two">CreateGatheringTwo</string>
-
-</resources><?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <string name="app_name">Gather</string>
-    <string name="hello_world"></string>
-    <string name="action_settings">Settings</string>
-    <string name="app_id">517489268397228</string>
-    <string name="title_activity_create_gathering">CreateGathering</string>
-    <string android:id="@+id/string1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
 </resources>

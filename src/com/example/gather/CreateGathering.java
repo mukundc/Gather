@@ -39,7 +39,7 @@ public class CreateGathering extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_gathering);
-
+			 
 		Session.openActiveSession(this, true, new Session.StatusCallback() {
 		public void call(Session session, SessionState state, Exception exception) {
 	    	if (session.isOpened()) {
@@ -72,15 +72,16 @@ public class CreateGathering extends ActionBarActivity {
 						 					TextView friends = (TextView) findViewById(R.id.textView1);
 						 					friends.setText(users.get(0).getName());	
 						 						
-						 					Button button = (Button) findViewById(R.id.next2);
-						 			        button.setOnClickListener(new OnClickListener() {
-						 			            @Override
-						 			        	public void onClick(View v) {
-						 			            	Intent i = new Intent(CreateGathering.this, CreateGatheringTwo.class);
-						 			            	startActivity(i);
-						 			                // TODO Auto-generated method stub
-						 			            }
-						 			        });
+						 					Button button = (Button) findViewById(R.id.next);
+
+								            button.setOnClickListener(new OnClickListener() {
+								                @Override
+								            	public void onClick(View v) {
+								                	//Intent i = new Intent(CreateGathering.this, CreateGatheringTwo.class);
+								                	//startActivity(i);
+								                    // TODO Auto-generated method stub
+								                }
+								            });
 						    			
 						    		  }
 
