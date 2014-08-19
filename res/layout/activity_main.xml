@@ -41,13 +41,4 @@
         android:layout_marginBottom="42dp"
         android:text="Create Gathering" />
 
-    <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="29dp"
-        android:text="RadioButton" />
-
 </RelativeLayout>

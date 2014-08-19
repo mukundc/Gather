@@ -31,14 +31,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CreateGathering extends ActionBarActivity {
+public class CreateGathering2 extends ActionBarActivity {
 
 	List<ParseObject> friendUsers;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_gathering);
+		setContentView(R.layout.activity_create_gathering2);
 			 
 		Session.openActiveSession(this, true, new Session.StatusCallback() {
 		public void call(Session session, SessionState state, Exception exception) {
@@ -77,8 +77,8 @@ public class CreateGathering extends ActionBarActivity {
 								            button.setOnClickListener(new OnClickListener() {
 								                @Override
 								            	public void onClick(View v) {
-								                	Intent i = new Intent(CreateGathering.this, CreateGathering2.class);
-								                	startActivity(i);
+								                	//Intent i = new Intent(CreateGathering.this, CreateGathering2.class);
+								                	//startActivity(i);
 								                    // TODO Auto-generated method stub
 								                }
 								            });
