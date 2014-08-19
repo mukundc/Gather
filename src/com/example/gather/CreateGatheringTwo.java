@@ -31,15 +31,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CreateGathering extends ActionBarActivity {
+public class CreateGatheringTwo extends ActionBarActivity {
 
 	List<ParseObject> friendUsers;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_create_gathering);
-
+		setContentView(R.layout.activity_create_gathering_two);
+			 
 		Session.openActiveSession(this, true, new Session.StatusCallback() {
 		public void call(Session session, SessionState state, Exception exception) {
 	    	if (session.isOpened()) {
@@ -73,14 +73,15 @@ public class CreateGathering extends ActionBarActivity {
 						 					friends.setText(users.get(0).getName());	
 						 						
 						 					Button button = (Button) findViewById(R.id.next2);
-						 			        button.setOnClickListener(new OnClickListener() {
-						 			            @Override
-						 			        	public void onClick(View v) {
-						 			            	Intent i = new Intent(CreateGathering.this, CreateGatheringTwo.class);
-						 			            	startActivity(i);
-						 			                // TODO Auto-generated method stub
-						 			            }
-						 			        });
+
+								            button.setOnClickListener(new OnClickListener() {
+								                @Override
+								            	public void onClick(View v) {
+								                	//Intent i = new Intent(CreateGathering.this, CreateGathering2.class);
+								                	//startActivity(i);
+								                    // TODO Auto-generated method stub
+								                }
+								            });
 						    			
 						    		  }
 

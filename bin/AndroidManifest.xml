@@ -38,6 +38,14 @@
             android:name=".CreateGathering"
             android:label="@string/title_activity_create_gathering" >
         </activity>
+        <activity
+            android:name=".CreateGathering2"
+            android:label="@string/title_activity_create_gathering2" >
+        </activity>
+        <activity
+            android:name=".CreateGatheringTwo"
+            android:label="@string/title_activity_create_gathering_two" >
+        </activity>
     </application>
 
 </manifest>
