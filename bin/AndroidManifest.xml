@@ -38,6 +38,15 @@
             android:name=".CreateGathering"
             android:label="@string/title_activity_create_gathering" >
         </activity>
+        <activity
+            android:name=".UserHome"
+            android:label="@string/title_activity_user_home" >
+        </activity>
+        
+        <activity
+            android:name=".InviteFriends"
+            android:label="@string/title_activity_invite_friends" >
+        </activity>
     </application>
 
 </manifest>

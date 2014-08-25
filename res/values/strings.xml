@@ -6,5 +6,12 @@
     <string name="action_settings">Settings</string>
     <string name="app_id">517489268397228</string>
     <string name="title_activity_create_gathering">CreateGathering</string>
-
+    <string name="title_activity_user_home">UserHome</string>
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
+    <string name="login_intro">Gather</string>
+    <string name="title_activity_gathering_creation">GatheringCreation</string>
+    <string name="title_activity_invite_friends">InviteFriends</string>
+<string name="error_dialog_title">Error</string>
+<string name="error_dialog_button_text">OK</string>
 </resources>
