@@ -42,10 +42,13 @@
             android:name=".UserHome"
             android:label="@string/title_activity_user_home" >
         </activity>
-        
         <activity
             android:name=".InviteFriends"
             android:label="@string/title_activity_invite_friends" >
+        </activity>
+        <activity
+            android:name=".CreateGathering2"
+            android:label="@string/title_activity_create_gathering2" >
         </activity>
     </application>
 

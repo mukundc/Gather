@@ -1445,33 +1445,35 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_create_gathering=0x7f030018;
-        public static final int activity_invite_friends=0x7f030019;
-        public static final int activity_main=0x7f03001a;
-        public static final int activity_user_home=0x7f03001b;
-        public static final int com_facebook_friendpickerfragment=0x7f03001c;
-        public static final int com_facebook_login_activity_layout=0x7f03001d;
-        public static final int com_facebook_picker_activity_circle_row=0x7f03001e;
-        public static final int com_facebook_picker_checkbox=0x7f03001f;
-        public static final int com_facebook_picker_image=0x7f030020;
-        public static final int com_facebook_picker_list_row=0x7f030021;
-        public static final int com_facebook_picker_list_section_header=0x7f030022;
-        public static final int com_facebook_picker_search_box=0x7f030023;
-        public static final int com_facebook_picker_title_bar=0x7f030024;
-        public static final int com_facebook_picker_title_bar_stub=0x7f030025;
-        public static final int com_facebook_placepickerfragment=0x7f030026;
-        public static final int com_facebook_placepickerfragment_list_row=0x7f030027;
-        public static final int com_facebook_search_bar_layout=0x7f030028;
-        public static final int com_facebook_tooltip_bubble=0x7f030029;
-        public static final int com_facebook_usersettingsfragment=0x7f03002a;
-        public static final int support_simple_spinner_dropdown_item=0x7f03002b;
+        public static final int activity_create_gathering2=0x7f030019;
+        public static final int activity_invite_friends=0x7f03001a;
+        public static final int activity_main=0x7f03001b;
+        public static final int activity_user_home=0x7f03001c;
+        public static final int com_facebook_friendpickerfragment=0x7f03001d;
+        public static final int com_facebook_login_activity_layout=0x7f03001e;
+        public static final int com_facebook_picker_activity_circle_row=0x7f03001f;
+        public static final int com_facebook_picker_checkbox=0x7f030020;
+        public static final int com_facebook_picker_image=0x7f030021;
+        public static final int com_facebook_picker_list_row=0x7f030022;
+        public static final int com_facebook_picker_list_section_header=0x7f030023;
+        public static final int com_facebook_picker_search_box=0x7f030024;
+        public static final int com_facebook_picker_title_bar=0x7f030025;
+        public static final int com_facebook_picker_title_bar_stub=0x7f030026;
+        public static final int com_facebook_placepickerfragment=0x7f030027;
+        public static final int com_facebook_placepickerfragment_list_row=0x7f030028;
+        public static final int com_facebook_search_bar_layout=0x7f030029;
+        public static final int com_facebook_tooltip_bubble=0x7f03002a;
+        public static final int com_facebook_usersettingsfragment=0x7f03002b;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002c;
     }
     public static final class menu {
         public static final int create_gathering=0x7f0c0000;
-        public static final int create_gathering_two=0x7f0c0001;
-        public static final int gathering_creation=0x7f0c0002;
-        public static final int invite_friends=0x7f0c0003;
-        public static final int main=0x7f0c0004;
-        public static final int user_home=0x7f0c0005;
+        public static final int create_gathering2=0x7f0c0001;
+        public static final int create_gathering_two=0x7f0c0002;
+        public static final int gathering_creation=0x7f0c0003;
+        public static final int invite_friends=0x7f0c0004;
+        public static final int main=0x7f0c0005;
+        public static final int user_home=0x7f0c0006;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1550,6 +1552,7 @@ containing a value of this type.
         public static final int login_intro=0x7f0a002f;
         public static final int logout=0x7f0a002e;
         public static final int title_activity_create_gathering=0x7f0a002b;
+        public static final int title_activity_create_gathering2=0x7f0a0034;
         public static final int title_activity_gathering_creation=0x7f0a0030;
         public static final int title_activity_invite_friends=0x7f0a0031;
         public static final int title_activity_user_home=0x7f0a002c;

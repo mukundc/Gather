@@ -12,6 +12,8 @@
     <string name="login_intro">Gather</string>
     <string name="title_activity_gathering_creation">GatheringCreation</string>
     <string name="title_activity_invite_friends">InviteFriends</string>
-<string name="error_dialog_title">Error</string>
-<string name="error_dialog_button_text">OK</string>
+    <string name="error_dialog_title">Error</string>
+    <string name="error_dialog_button_text">OK</string>
+    <string name="title_activity_create_gathering2">CreateGathering2</string>
+
 </resources>
