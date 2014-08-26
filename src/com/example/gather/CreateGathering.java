@@ -32,6 +32,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,76 +47,22 @@ public class CreateGathering extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_gathering);
 
-
-		Button button = (Button) findViewById(R.id.button1);
+		Button button = (Button) findViewById(R.id.next);
 
         button.setOnClickListener(new OnClickListener() {
             @Override
         	public void onClick(View v) {
-            	// Insert the fragment by replacing any existing fragment
-            	//startPickerActivity(InviteFriends.FRIEND_PICKER);
+            	String name = ((EditText) findViewById(R.id.editText1)).getText().toString(); 
+        		String description = ((EditText) findViewById(R.id.editText2)).getText().toString();
+        		String location = ((EditText) findViewById(R.id.editText3)).getText().toString();
+        		GatheringObject gathering = new GatheringObject(name,description,location, null);
+        		Toast.makeText(CreateGathering.this,location,Toast.LENGTH_SHORT).show();
+        		Intent i = new Intent(CreateGathering.this, CreateGathering2.class);
+
             }
         });
 	}
-			
-	
-	
-	
-		/*Session.openActiveSession(this, true, new Session.StatusCallback() {
-		public void call(Session session, SessionState state, Exception exception) {
-	    	if (session.isOpened()) {
-	    		
-	    	
-	    							Request.newMyFriendsRequest(session, new Request.GraphUserListCallback() {
-			
-				    		  // callback after Graph API response with user object
-						    		  @Override
-						    		  public void onCompleted(List<GraphUser> users, Response response) {
-					    				  List<String> friendsList = new ArrayList<String>();
-						    			  if (users != null) {
-						    			      for (GraphUser user : users) {
-						    			        friendsList.add(user.getId());
-						    			        
-						    			      }
-						    			      // Construct a ParseUser query that will find friends whose
-						    			      // facebook IDs are contained in the current user's friend list.
-						    			      /*ParseQuery friendQuery = ParseUser.getQuery();
-						    			      friendQuery.whereContainedIn("fbId", friendsList);
-						    			      try {
-								 					friendUsers = (List<ParseObject>) friendQuery.find();
-								 					TextView friends = (TextView) findViewById(R.id.textView1);
-								 					friends.setText(((ParseObject) friendUsers.get(0)).getString("name"));
-								 			      } catch (ParseException | com.parse.ParseException e) {
-								 					// TODO Auto-generated catch block
-								 					e.printStackTrace();
-								 				}
-						    				}
-						 					TextView friends = (TextView) findViewById(R.id.textView1);
-						 					friends.setText(users.get(0).getName());	
-						 						
-						 					Button button = (Button) findViewById(R.id.next);
-
-								            button.setOnClickListener(new OnClickListener() {
-								                @Override
-								            	public void onClick(View v) {
-								                	//Intent i = new Intent(CreateGathering.this, CreateGatheringTwo.class);
-								                	//startActivity(i);
-								                    // TODO Auto-generated method stub
-								                }
-								            });
-						    			
-						    		  }
-
-									
-						    		}).executeAsync();
-	    	}
-		}
-		});*/
-
-		  
-
-	
-
+		
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

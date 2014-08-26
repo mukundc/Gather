@@ -10,14 +10,7 @@
     tools:context="com.example.gather.CreateGathering" >
 
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/fragment2"
-        android:layout_below="@+id/fragment2"
-        android:layout_marginTop="28dp"
-        android:text="Invite Friends" />
+    
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -72,7 +65,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/EditText01"
+        android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_x="4dp"
