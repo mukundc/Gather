@@ -10,7 +10,6 @@
     tools:context="com.example.gather.CreateGathering" >
 
 
-<<<<<<< HEAD
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
@@ -19,7 +18,6 @@
         android:layout_below="@+id/fragment2"
         android:layout_marginTop="28dp"
         android:text="Invite Friends" />
-=======
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -88,6 +86,5 @@
         android:layout_x="101dp"
         android:layout_y="328dp"
         android:text="Next" />
->>>>>>> 84c939068dbe181d69f20291412b9b6b80b630d3
 
 </AbsoluteLayout>
