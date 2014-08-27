@@ -56,10 +56,11 @@ public class CreateGathering extends Activity {
         		String description = ((EditText) findViewById(R.id.editText2)).getText().toString();
         		String location = ((EditText) findViewById(R.id.editText3)).getText().toString();
         		GatheringObject gathering = new GatheringObject(name,description,location, null);
-        		Toast.makeText(CreateGathering.this,location,Toast.LENGTH_SHORT).show();
+        		//Toast.makeText(CreateGathering.this,location,Toast.LENGTH_SHORT).show();
         		Intent i = new Intent(CreateGathering.this, CreateGathering2.class);
         		i.putExtra("gatheringObj", gathering);
-        		startActivity(i);
+        		startActivityForResult(i, 1);
+        		Bundle args = getIntent().getExtras();
             }
         });
 	}
@@ -81,5 +82,23 @@ public class CreateGathering extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+	    if (requestCode == 1) {
+	        if(resultCode == RESULT_OK){
+	        		ArrayList s = data.getStringArrayListExtra("IEXTRA_SELECTED_FRIENDS");
+	        		/*if (s == null)
+	        			//Toast.makeText(CreateGathering.this,"null",Toast.LENGTH_SHORT).show();
+	        		else
+	        			//Toast.makeText(CreateGathering.this,(String)s.get(0),Toast.LENGTH_SHORT).show();*/
+		        
+	        }
+	        
+	        if (resultCode == RESULT_CANCELED) {
+	            //Write your code if there's no result
+	        }
+	    }
 	}
 }
