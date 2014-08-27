@@ -13,12 +13,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import com.facebook.FacebookException;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.Parse;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -72,56 +72,36 @@ public class CreateGathering2 extends ActionBarActivity {
 	                    usersID.add(user.getId());
 	                }
 	                obj.setFriends(usersID);
-	                ParseUser currentUser = ParseUser
+	                final ParseUser currentUser = ParseUser
 							.getCurrentUser();
 	                final ParseObject gathering = new ParseObject("Gathering");
 	                gathering.put("name", obj.getName());
 	                gathering.put("description", obj.getDescription());
 	                gathering.put("location", obj.getLocation());
 	                gathering.put("createdBy", currentUser);
-	 	            gathering.put("users", currentUser);
+	                gathering.add("users", currentUser);
 	                gathering.saveInBackground();
-	                //final ParseRelation<ParseObject> relation = gathering.getRelation("members");
- 	               //ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
-                			/*query.fromLocalDatastore();
-                			query.getInBackground("xWMyZ4YE", new GetCallback<ParseObject>() {
-                			    public void done(ParseObject object, ParseException e) {
-                			        if (e == null) {
-                			            // object will be your game score
-                			        } else {
-                			            // something went wrong
-                			        }
-                			    }
-                			});*/
-                	
-                	/*query.whereEqualTo("fbId",currentUser.get("fbID"));
-	                query.findInBackground( new FindCallback<ParseObject>() {
-	                	public void done(List<ParseObject> users, ParseException e) {
+	                currentUser.add("myCreatedGatherings", gathering);
+	                currentUser.saveInBackground();
+	                ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+	                Log.d("IDDDDDD", usersID.get(0));
+	                query.whereEqualTo("fbId", usersID.get(0).toString());
+	                query.findInBackground(new FindCallback<ParseObject>() {
+	                    public void done(List<ParseObject> scoreList, ParseException e) {
 	                        if (e == null) {
-	                        	Toast.makeText(CreateGathering2.this,users.toString(),Toast.LENGTH_SHORT).show();
-	                        	gathering.put("users", users.get(0));
-	                            Log.d("score", "Retrieved " + users.size() + " scores");
+	                            Log.d("User", "Retrieved " + scoreList.size() + " users");
+	                            ParseUser invitedUser =  ((ParseUser)scoreList.get(0));
+	                            gathering.add("users", invitedUser);
+	        	                gathering.saveInBackground();
+
 	                        } else {
-	                            Log.d("score", "Error: " + e.getMessage());
+	                            Log.d("User", "Error: " + e.getMessage());
 	                        }
 	                    }
-	                });*/
-	                 
-	                /*ArrayList mygatherings = (ArrayList) currentUser.get("myGatherings");
-	                if (mygatherings == null)
-	                {
-	                	mygatherings = new ArrayList<GatheringObject>();
-	                	mygatherings.add(obj);
-	                	currentUser.put("myGatherings", mygatherings);
-	                }
-	                else
-	                {
-	                	mygatherings.add(obj);
-	                	currentUser.put("myGatherings", mygatherings);
-	                }*/
-	                currentUser.saveInBackground();
-					//ParseRelation relation = currentUser.getRelation("myGatherings");
-	                //relation.add(obj);
+	                });
+
+	                //final ParseRelation<ParseObject> relation = gathering.getRelation("members");
+
 	                
 	                Intent data = new Intent();
 	                data.putStringArrayListExtra(IEXTRA_SELECTED_FRIENDS, usersID);

@@ -84,7 +84,7 @@ public class CreateGathering extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	/*protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 	    if (requestCode == 1) {
 	        if(resultCode == RESULT_OK){
@@ -92,7 +92,7 @@ public class CreateGathering extends Activity {
 	        		/*if (s == null)
 	        			//Toast.makeText(CreateGathering.this,"null",Toast.LENGTH_SHORT).show();
 	        		else
-	        			//Toast.makeText(CreateGathering.this,(String)s.get(0),Toast.LENGTH_SHORT).show();*/
+	        			//Toast.makeText(CreateGathering.this,(String)s.get(0),Toast.LENGTH_SHORT).show();
 		        
 	        }
 	        
@@ -100,5 +100,5 @@ public class CreateGathering extends Activity {
 	            //Write your code if there's no result
 	        }
 	    }
-	}
+	}*/
 }
