@@ -59,8 +59,8 @@ public class CreateGathering extends Activity {
         		Toast.makeText(CreateGathering.this,location,Toast.LENGTH_SHORT).show();
         		Intent i = new Intent(CreateGathering.this, CreateGathering2.class);
         		i.putExtra("gatheringObj", gathering);
-        		startActivity(i);
-            }
+        		startActivity(i);            
+        		}
         });
 	}
 		
@@ -82,4 +82,6 @@ public class CreateGathering extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
 }

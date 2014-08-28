@@ -28,7 +28,10 @@ public class CreateGathering2 extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_create_gathering2);
+	    showfriendpicker(savedInstanceState);
 
+	}
+	public void showfriendpicker(Bundle savedInstanceState){
 	    Bundle args = getIntent().getExtras();
 	    FragmentManager manager = getSupportFragmentManager();
 	    Fragment fragmentToShow = null;
@@ -53,11 +56,11 @@ public class CreateGathering2 extends ActionBarActivity {
 	        public void onDoneButtonClicked(PickerFragment<?> fragment) {
 	            List<GraphUser> users = friendPickerFragment.getSelection();
 	            if (users.size() > 0) {
-	                ArrayList<String> usernames = new ArrayList<String>(users.size());
+	                ArrayList<String> userIds = new ArrayList<String>(users.size());
 	                for (GraphUser user : users)
-	                    usernames.add(user.getUsername());
+	                    userIds.add(user.getId());
 	                Intent data = new Intent();
-	                data.putStringArrayListExtra(IEXTRA_SELECTED_FRIENDS, usernames);
+	                data.putStringArrayListExtra(IEXTRA_SELECTED_FRIENDS, userIds);
 	                setResult(RESULT_OK, data);
 	                finish();
 	            } else {
@@ -68,33 +71,14 @@ public class CreateGathering2 extends ActionBarActivity {
 	    });
 	    fragmentToShow = friendPickerFragment;
 	    manager.beginTransaction().replace(R.id.picker_fragment, fragmentToShow).commit();
+	    
 	}
-	private void showfriendpicker()
-    {
-         FragmentManager manager = getSupportFragmentManager();
-         Fragment fragmentToShow = null;
-         Bundle args = getIntent().getExtras();
-         friendPickerFragment = new FriendPickerFragment(args);
-             // friendPickerFragment =  (FriendPickerFragment)
-         manager.findFragmentById(R.id.picker_fragment);
 
-    Fragment  fragment = manager.findFragmentById(R.id.picker_fragment);
-                if (fragment == null) {
-
-                    android.support.v4.app.FragmentTransaction ft = manager.beginTransaction();
-                    ft.add(R.id.picker_fragment, friendPickerFragment);
-                    Fragment  fragment1 = manager.findFragmentById(R.id.picker_fragment);
-                   ft.show(fragment1);
-                    ft.commit(); 
-                     friendPickerFragment.loadData(false);
-                    }
-
-    } 
 
 	@Override
 	protected void onStart() {
-	    super.onStart();
-	    showfriendpicker();
+	    super.onStart();	
+	    friendPickerFragment.loadData(false);
 	}
 	
 	/*@Override
