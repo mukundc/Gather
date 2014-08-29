@@ -29,6 +29,7 @@ import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 public class MainActivity extends ActionBarActivity {
@@ -39,9 +40,10 @@ public class MainActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//ParseObject.registerSubclass(GatheringObject.class);
 		Parse.initialize(this, "uVxfiClzLcUQTzjmbgsxCBc2FnxwtIWNShjAYlDS", "DQGZDxAmQgF25azTspg0Jrw2Mc1LcViPOW3kctgi");
 		ParseFacebookUtils.initialize(getString(R.string.app_id));
-
+		
 		setContentView(R.layout.activity_main);
 
 		loginButton = (Button) findViewById(R.id.loginButton);

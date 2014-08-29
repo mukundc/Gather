@@ -50,6 +50,10 @@
             android:name=".CreateGathering2"
             android:label="@string/title_activity_create_gathering2" >
         </activity>
+        <activity
+            android:name=".MyGatherings"
+            android:label="@string/title_activity_my_gatherings" >
+        </activity>
     </application>
 
 </manifest>

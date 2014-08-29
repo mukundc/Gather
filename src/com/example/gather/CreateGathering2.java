@@ -1,20 +1,29 @@
 package com.example.gather;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.facebook.model.GraphUser;
 import com.facebook.widget.FriendPickerFragment;
 import com.facebook.widget.PickerFragment;
-
+import com.parse.ParseException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import com.facebook.FacebookException;
+import com.parse.FindCallback;
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
+
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -28,16 +37,15 @@ public class CreateGathering2 extends ActionBarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_create_gathering2);
-	    showfriendpicker(savedInstanceState);
-
-	}
-	public void showfriendpicker(Bundle savedInstanceState){
+	    Intent i1 = getIntent();
+		final GatheringObject obj = (GatheringObject) i1.getSerializableExtra("gatheringObj");
 	    Bundle args = getIntent().getExtras();
 	    FragmentManager manager = getSupportFragmentManager();
 	    Fragment fragmentToShow = null;
 
 	    if (savedInstanceState == null) {
 	        friendPickerFragment = new FriendPickerFragment(args);
+
 	    } else {
 	        friendPickerFragment = (FriendPickerFragment) manager.findFragmentById(R.id.picker_fragment);
 	    }
@@ -50,18 +58,56 @@ public class CreateGathering2 extends ActionBarActivity {
 	            finish();
 	        }
 	    });
+	    
+
 	    // Set the listener to handle button clicks
 	    friendPickerFragment.setOnDoneButtonClickedListener(new PickerFragment.OnDoneButtonClickedListener() {
 	        @Override
 	        public void onDoneButtonClicked(PickerFragment<?> fragment) {
 	            List<GraphUser> users = friendPickerFragment.getSelection();
 	            if (users.size() > 0) {
-	                ArrayList<String> userIds = new ArrayList<String>(users.size());
-	                for (GraphUser user : users)
-	                    userIds.add(user.getId());
+	                ArrayList<String> usersID = new ArrayList<String>(users.size());
+	                for (GraphUser user : users)	   
+	                {
+	                    usersID.add(user.getId());
+	                }
+	                obj.setFriends(usersID);
+	                final ParseUser currentUser = ParseUser
+							.getCurrentUser();
+	                final ParseObject gathering = new ParseObject("Gathering");
+	                gathering.put("name", obj.getName());
+	                gathering.put("description", obj.getDescription());
+	                gathering.put("location", obj.getLocation());
+	                gathering.put("createdBy", currentUser);
+	                gathering.add("users", currentUser);
+	                gathering.add("admin", currentUser.getObjectId());
+	                gathering.saveInBackground();
+	                currentUser.add("myCreatedGatherings", gathering);
+	                currentUser.saveInBackground();
+	                ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+	                Log.d("IDDDDDD", usersID.get(0));
+	                query.whereEqualTo("fbId", usersID.get(0).toString());
+	                query.findInBackground(new FindCallback<ParseObject>() {
+	                    public void done(List<ParseObject> scoreList, ParseException e) {
+	                        if (e == null) {
+	                            Log.d("User", "Retrieved " + scoreList.size() + " users");
+	                            ParseUser invitedUser =  ((ParseUser)scoreList.get(0));
+	                            gathering.add("users", invitedUser);
+	        	                gathering.saveInBackground();
+
+	                        } else {
+	                            Log.d("User", "Error: " + e.getMessage());
+	                        }
+	                    }
+	                });
+
+	                //final ParseRelation<ParseObject> relation = gathering.getRelation("members");
+
+	                
 	                Intent data = new Intent();
-	                data.putStringArrayListExtra(IEXTRA_SELECTED_FRIENDS, userIds);
+	                data.putStringArrayListExtra(IEXTRA_SELECTED_FRIENDS, usersID);
 	                setResult(RESULT_OK, data);
+	                
 	                finish();
 	            } else {
 	                setResult(RESULT_CANCELED);
@@ -74,11 +120,33 @@ public class CreateGathering2 extends ActionBarActivity {
 	    
 	}
 
-
 	@Override
 	protected void onStart() {
 	    super.onStart();	
 	    friendPickerFragment.loadData(false);
+
+	/*
+	private void showfriendpicker()
+    {
+         FragmentManager manager = getSupportFragmentManager();
+         Fragment fragmentToShow = null;
+         Bundle args = getIntent().getExtras();
+         friendPickerFragment = new FriendPickerFragment(args);
+             // friendPickerFragment =  (FriendPickerFragment)
+         manager.findFragmentById(R.id.picker_fragment);
+
+    Fragment  fragment = manager.findFragmentById(R.id.picker_fragment);
+                if (fragment == null) {
+
+                    android.support.v4.app.FragmentTransaction ft = manager.beginTransaction();
+                    ft.add(R.id.picker_fragment, friendPickerFragment);
+                    Fragment  fragment1 = manager.findFragmentById(R.id.picker_fragment);
+                   ft.show(fragment1);
+                    ft.commit(); 
+                     friendPickerFragment.loadData(false);
+                    }
+
+    } */
 	}
 	
 	/*@Override
@@ -109,4 +177,5 @@ public class CreateGathering2 extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}*/
+	
 }

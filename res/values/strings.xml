@@ -15,5 +15,6 @@
     <string name="error_dialog_title">Error</string>
     <string name="error_dialog_button_text">OK</string>
     <string name="title_activity_create_gathering2">CreateGathering2</string>
+    <string name="title_activity_my_gatherings">MyGatherings</string>
 
 </resources>
