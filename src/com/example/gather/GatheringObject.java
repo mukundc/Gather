@@ -21,17 +21,22 @@ public class GatheringObject implements Serializable {
 		location = "null";
 		friends = null;
 	}
-	public GatheringObject(String n, String d, String l, List<String> f)
+	public GatheringObject(String n, String d, String l, List<String> f, String a)
 	{
 		name = n;
 		description = d;
 		location = l;
 		friends = f;
+		admin = a;
 	}
 	
 	public String getName()
 	{
 		return name;
+	}
+	public void setAdmin(String newAdmin)
+	{
+		admin = newAdmin;
 	}
 	public String getAdmin()
 	{

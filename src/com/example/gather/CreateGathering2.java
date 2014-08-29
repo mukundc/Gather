@@ -20,8 +20,11 @@ import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -29,7 +32,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class CreateGathering2 extends ActionBarActivity {
-	public static final String IEXTRA_SELECTED_FRIENDS = "selected friends";
+	public static final String EXTRA_SELECTED_FRIENDS = "selected friends";
 
 	private FriendPickerFragment friendPickerFragment;
 
@@ -62,7 +65,9 @@ public class CreateGathering2 extends ActionBarActivity {
 
 	    // Set the listener to handle button clicks
 	    friendPickerFragment.setOnDoneButtonClickedListener(new PickerFragment.OnDoneButtonClickedListener() {
-	        @Override
+	        @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+			@SuppressLint("NewApi")
+			@Override
 	        public void onDoneButtonClicked(PickerFragment<?> fragment) {
 	            List<GraphUser> users = friendPickerFragment.getSelection();
 	            if (users.size() > 0) {
@@ -71,43 +76,15 @@ public class CreateGathering2 extends ActionBarActivity {
 	                {
 	                    usersID.add(user.getId());
 	                }
-	                obj.setFriends(usersID);
-	                final ParseUser currentUser = ParseUser
-							.getCurrentUser();
-	                final ParseObject gathering = new ParseObject("Gathering");
-	                gathering.put("name", obj.getName());
-	                gathering.put("description", obj.getDescription());
-	                gathering.put("location", obj.getLocation());
-	                gathering.put("createdBy", currentUser);
-	                gathering.add("users", currentUser);
-	                gathering.add("admin", currentUser.getObjectId());
-	                gathering.saveInBackground();
-	                currentUser.add("myCreatedGatherings", gathering);
-	                currentUser.saveInBackground();
-	                ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-	                Log.d("IDDDDDD", usersID.get(0));
-	                query.whereEqualTo("fbId", usersID.get(0).toString());
-	                query.findInBackground(new FindCallback<ParseObject>() {
-	                    public void done(List<ParseObject> scoreList, ParseException e) {
-	                        if (e == null) {
-	                            Log.d("User", "Retrieved " + scoreList.size() + " users");
-	                            ParseUser invitedUser =  ((ParseUser)scoreList.get(0));
-	                            gathering.add("users", invitedUser);
-	        	                gathering.saveInBackground();
-
-	                        } else {
-	                            Log.d("User", "Error: " + e.getMessage());
-	                        }
-	                    }
-	                });
-
 	                //final ParseRelation<ParseObject> relation = gathering.getRelation("members");
 
 	                
 	                Intent data = new Intent();
-	                data.putStringArrayListExtra(IEXTRA_SELECTED_FRIENDS, usersID);
+	                data.putStringArrayListExtra(EXTRA_SELECTED_FRIENDS, usersID);
 	                setResult(RESULT_OK, data);
-	                
+	               //CreateGathering2.this.getFragmentManager().popBackStack();
+	              // setContentView(R.layout.activity_create_gathering2);
+
 	                finish();
 	            } else {
 	                setResult(RESULT_CANCELED);
