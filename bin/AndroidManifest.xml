@@ -55,8 +55,12 @@
             android:label="@string/title_activity_my_gatherings" >
         </activity>
         <activity
-            android:name=".Calendar"
+            android:name=".CalendarActivity"
             android:label="@string/title_activity_calendar" >
+        </activity>
+        <activity
+            android:name=".HourSelector"
+            android:label="@string/title_activity_hour_selector" >
         </activity>
     </application>
 

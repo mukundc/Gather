@@ -17,5 +17,6 @@
     <string name="title_activity_create_gathering2">CreateGathering2</string>
     <string name="title_activity_my_gatherings">MyGatherings</string>
     <string name="title_activity_calendar">Calendar</string>
+    <string name="title_activity_hour_selector">HourSelector</string>
 
 </resources>

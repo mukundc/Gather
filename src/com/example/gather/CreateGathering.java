@@ -73,9 +73,10 @@ public class CreateGathering extends Activity {
 					Toast.makeText(CreateGathering.this,"No Friends Selected for the Gathering", Toast.LENGTH_SHORT).show();
 				}
 			});
-		Button selectTime = (Button) findViewById(R.id.selectTime);
+		
+			Button selectTime = (Button) findViewById(R.id.selectTime);
 
-        button.setOnClickListener(new OnClickListener() {
+       selectTime.setOnClickListener(new OnClickListener() {
             @Override
         	public void onClick(View v) {
             	
