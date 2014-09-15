@@ -63,6 +63,17 @@ public class UserHome extends ActionBarActivity {
                 // TODO Auto-generated method stub
             }
         });
+        
+        Button button2 = (Button) findViewById(R.id.myGatherings);
+
+        button2.setOnClickListener(new OnClickListener() {
+            @Override
+        	public void onClick(View v) {
+            	Intent i = new Intent(UserHome.this, MyGatherings.class);
+            	startActivity(i);
+                // TODO Auto-generated method stub
+            }
+        });
 		
 	}
 

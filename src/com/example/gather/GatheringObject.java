@@ -12,6 +12,7 @@ public class GatheringObject implements Serializable {
 	private String description;
 	private String location;
 	private List<String> friends;
+	private String admin;
 	
 	public GatheringObject()
 	{
@@ -20,17 +21,41 @@ public class GatheringObject implements Serializable {
 		location = "null";
 		friends = null;
 	}
-	public GatheringObject(String n, String d, String l, List<String> f)
+	public GatheringObject(String n, String d, String l, List<String> f, String a)
 	{
 		name = n;
 		description = d;
 		location = l;
 		friends = f;
+		admin = a;
 	}
 	
 	public String getName()
 	{
 		return name;
+	}
+	public void setAdmin(String newAdmin)
+	{
+		admin = newAdmin;
+	}
+	
+	public void setName (String n)
+	{
+		name = n;
+	}
+	
+	public void setDescription(String d)
+	{
+		description = d;
+	}
+	
+	public void setLocation(String l)
+	{
+		location = l;
+	}
+	public String getAdmin()
+	{
+		return admin;
 	}
 	
 	public String getDescription()

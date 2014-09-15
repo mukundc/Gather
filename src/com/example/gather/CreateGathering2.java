@@ -76,10 +76,8 @@ public class CreateGathering2 extends ActionBarActivity {
 	                {
 	                    usersID.add(user.getId());
 	                }
-	                
-
 	                //final ParseRelation<ParseObject> relation = gathering.getRelation("members");
-
+	                Log.d("Testing the inside this for loop", users.get(0).toString());
 	                
 	                Intent data = new Intent();
 	                data.putStringArrayListExtra(EXTRA_SELECTED_FRIENDS, usersID);
@@ -89,14 +87,21 @@ public class CreateGathering2 extends ActionBarActivity {
 
 	                finish();
 	            } else {
-	                setResult(RESULT_CANCELED);
+	                setResult(RESULT_OK);
+	                
 	                finish();
 	            }
 	        }
 	    });
 	    fragmentToShow = friendPickerFragment;
 	    manager.beginTransaction().replace(R.id.picker_fragment, fragmentToShow).commit();
+	    
 	}
+
+	@Override
+	protected void onStart() {
+	    super.onStart();	
+	    friendPickerFragment.loadData(false);
 
 	/*
 	private void showfriendpicker()
@@ -120,12 +125,6 @@ public class CreateGathering2 extends ActionBarActivity {
                     }
 
     } */
-
-	@Override
-	protected void onStart() {
-	    super.onStart();
-	    friendPickerFragment.loadData(false);
-
 	}
 	
 	/*@Override
